@@ -1,0 +1,14 @@
+<h3>All Authors</h3>
+<ul>
+	<% @authors.each do |author| %>
+		<li>
+			<%= link_to author.name, author_path(author) %>
+		</li>
+	<% end %>
+	<% if @authors.count.zero? %>
+		No Authors Have Been Published
+	<% end %>
+	<li>	
+		<%= link_to "All Thoughts", thoughts_path %>
+	</li>
+</ul>

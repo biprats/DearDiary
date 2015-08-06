@@ -1,0 +1,22 @@
+class ThoughtsController < ApplicationController
+
+	def new
+	end
+	
+	def create
+	end
+	
+	def edit
+	end
+
+	def show
+		@thought = Thought.find(params[:id])
+		@author = @thought.author
+	end
+
+	def index
+		@thoughts = Thought.all
+		@authors = Author.all
+	end
+
+end

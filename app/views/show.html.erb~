@@ -1,0 +1,8 @@
+
+<% author = Author.first %>
+<h3><%= author.name %></h3>
+<ul>
+	<li><%= author.entries.all %></li>
+</ul>
+
+# <p><%= link_to "Other Authors", all_authors %></p>

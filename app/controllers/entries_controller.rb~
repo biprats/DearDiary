@@ -1,0 +1,14 @@
+class EntriesController < ApplicationController
+
+	def edit
+	end
+
+	def show
+		@entry = Entry.find(params[:id])
+	end
+
+	def index
+		@entries = Entry.all
+	end
+
+end

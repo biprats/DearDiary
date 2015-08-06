@@ -1,0 +1,18 @@
+<h3>All Thoughts</h3>
+<ul>
+	<% @thoughts.each do |t| %>
+	  <li>
+		<%= link_to t.text, thought_path(t) %>
+		By <%= link_to t.author.name, author_path(t.author) %>
+	  </li>
+	<% end %>
+	<% if @thoughts.count.zero? %>
+		Nobody is Thinking
+	<% end %>
+  </li>
+  <li>
+	<%= link_to "All Authors", authors_path %>
+  </li>
+</ul>
+
+
