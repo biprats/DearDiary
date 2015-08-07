@@ -9,6 +9,6 @@
 		No Authors Have Been Published
 	<% end %>
 	<li>	
-		<%= link_to "All Thoughts", "thoughts#index" %>
+		<%= link_to "All Thoughts", thoughts_path %>
 	</li>
 </ul>

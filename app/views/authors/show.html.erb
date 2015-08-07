@@ -1,15 +1,25 @@
 
-<h3><%= @author.name %></h3>
-<p><%= @author.bio %></p>
+<h1><%= @author.name %>
+	<% if @author.bio.present? %>
+	<br>
+		<h3>
+			Bio:
+		</h3>
+		<p>
+			<%= @author.bio %>
+		</p>
+		<br>
+	<% end %>
+<h3>
+	Thoughts:
+</h3>
 <ul>
 		<% @author.thoughts.each do |t| %>
-		  <li>			
-			<%= t.text %>
+		  <li class="text">			
+			<%= link_to t.text, thought_path(t) %>
 		  </li>	
 		<% end %>
 		<% if @author.thoughts.count.zero? %>
-			This Author Has No Entries
+			This Author is Not Thinking
 		<% end %>
 </ul>
-
-<p><%= link_to "Other Authors", authors_path %></p>

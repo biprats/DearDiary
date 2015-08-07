@@ -1,9 +1,9 @@
 <h3>Just a Thought by <%= @author.name %></h3>
-
-<p>
+<br>
+<p class="text">
 	<%= @thought.text %>
+</p>
 <br>
+<p>
 	<%= link_to "More Thoughts by This Author", author_path(@thought.author) %>
-<br>
-	<%= link_to "All Thoughts", thoughts_path %>
 </p>

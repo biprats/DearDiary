@@ -2,6 +2,8 @@
 
 <p>
 	<%= @thought.text %>
+<br>
 	<%= link_to "More Thoughts by This Author", author_path(@thought.author) %>
+<br>
 	<%= link_to "All Thoughts", thoughts_path %>
 </p>

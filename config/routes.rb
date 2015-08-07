@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-	root to: "authors#index", as: :authors
+	root to: "thoughts#index", as: :thoughts
 	resources :authors
 	resources :thoughts
-	
 	
 
 end

@@ -5,4 +5,4 @@
 	<li><%= author.entries.all %></li>
 </ul>
 
-# <p><%= link_to "Other Authors", all_authors %></p>
+<p><%= link_to "Other Authors", all_authors %></p>

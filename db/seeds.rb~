@@ -1,0 +1,16 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
+Author.create(name: "Brian", bio: "Trying my best. Ok?")
+Author.find_by(name: "Brian") << Author.Thought.create(text: "Dear Diary, This was a lot harder to do than it looks. Sincerely, Frustrated")
+Author.find_by(name: "Brian") << Author.Thought.create(text: "Second day of programming is pretty productive though.")
+Author.create(name: "Tom", bio: "I think I'm omniscient")
+Author.find_by(name: "Tom") << Author.Thought.create(text: "I know what you're thinking.")
+Author.find_by(name: "Tom") << Author.Thought.create(text: "I am a deity of code.")
+Author.find_by(name: "Brian") << Author.Thought.create(text: "Tom is starting to creep me out.")
+Author.create(name: "Derek", bio: "I wish my laugh could be communicated in this string.")
+Author.find_by(name: "Derek") << Author.Thought.create(text: "I'm scared that I'll post something offensive. Mainly because there is no option to delete yet.")

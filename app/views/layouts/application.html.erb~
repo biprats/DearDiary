@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blogtest</title>
+  <title>DearDiary</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<%= render "layouts/head" %>
 <body>
-
-<%= yield %>
-
+<%= render "layouts/header" %>
+    <div class="body-out">
+      <div class="body-in">
+        <div class="<%= action_name %>">
+          <%= yield %>
+        </div>
+        <%= render "layouts/footer" %>
+      </div>
+    </div>
 </body>
 </html>
