@@ -2,10 +2,10 @@
 <ul>
   <li>
 	<table>
-	<% @thoughts.each do |t| %>
+	<% Thought.all.each do |t| %>
 	  <tr>
 	  <td class="text">
-		<%= link_to t.text, thought_path(t) %>
+		<%= link_to t.text, author_thought_path(t.author_id, t.id) %>
 	  </td>
 	  <td>
 		By <%= link_to t.author.name, author_path(t.author) %>

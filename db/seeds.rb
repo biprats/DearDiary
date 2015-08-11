@@ -5,5 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Author.create(name: "Brian", bio: "Trying my best. Ok?")
-
+a = Author.create(name: "Briam", bio: "Yes, I am Briam.", password: "password")
+a.thoughts.create(text: "New phone who dis?")
+a.thoughts.create(text: "Eggplant says I am in control.")

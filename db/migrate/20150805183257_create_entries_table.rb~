@@ -1,8 +1,0 @@
-class CreateEntriesTable < ActiveRecord::Migration
-  def change
-    create_table :entries do |t|
-      t.integer :author_id
-      t.text :thoughts
-    end
-  end
-end

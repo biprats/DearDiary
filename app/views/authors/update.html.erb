@@ -1,0 +1,25 @@
+Display when user views own show page
+<h1 class='top'>
+	<%= @author.name %>
+	<span class='tag'>(YOU)</span>
+</h1>
+<h3>Change Signature</h3>
+<h3>Change Password</h3>
+<h3>Change Photo</h3>
+<h3>Save Changes and show page</h3>
+<h2 class='top'>Your Thoughts</h2>
+<ul>
+		<% @author.thoughts.each do |t| %>
+		  <li class="text">			
+			<%= link_to t.text, thought_path(t) %>
+		  </li>	
+		  <li>
+		  	<%= link_to 'Edit Thought', thought_path(t), method: :put %>
+		  </li>
+		  <br>
+		<% end %>
+		<% if @author.thoughts.count.zero? %>
+			You Have Not Taken Time to Think
+		<% end %>
+</ul>
+<h3><%= link_to 'Delete account*', @author, method: :delete %></h3>

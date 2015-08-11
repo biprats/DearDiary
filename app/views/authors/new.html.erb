@@ -1,3 +1,24 @@
-<h1>Sign Up</h1>
-<h3>Username</h3>
-<h3>Password</h3>
+<h3 class="ekfbkfv">
+	<div>
+	Sign Up
+		<br><br><%= form_for(Author.new) do |f| %>
+			<%= f.label :name %><br />
+			<%= f.text_field :name %><br /><br>
+			<%= f.label :password %><br />
+			<%= f.password_field :password %><br><br>
+			<%= f.label :bio %><br />
+			<%= f.text_area :bio %><br /><br>
+			<%= f.submit "Sign Up" %>
+		<% end %>
+	</div>
+	<div>
+	Sign In
+		<br><br><%= form_for(Author.new, url: sessions_path) do |f| %>
+			<%= f.label :name %><br />
+			<%= f.text_field :name %><br /><br>
+			<%= f.label :password %><br />
+			<%= f.password_field :password %><br /><br>
+			<%= f.submit "Sign In" %>
+		<% end %>
+	</div>
+</h3>

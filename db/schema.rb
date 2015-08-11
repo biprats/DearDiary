@@ -14,15 +14,18 @@
 ActiveRecord::Schema.define(version: 20150805203757) do
 
   create_table "authors", force: :cascade do |t|
-    t.string "name"
-    t.text   "bio"
+    t.string   "name"
+    t.text     "bio"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "thoughts", force: :cascade do |t|
     t.integer  "author_id"
     t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
