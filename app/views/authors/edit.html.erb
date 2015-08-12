@@ -1,0 +1,13 @@
+<h1>Edit Author</h1>
+<p>
+<%= form_for(@author) do |f| %>
+	<%= f.label :name %><br />
+	<%= f.text_field :name %><br /><br>
+	<%= f.label :password %><br />
+	<%= f.password_field :password %><br><br>
+	<%= f.label :bio %><br />
+	<%= f.text_area :bio %><br /><br>
+	<%= f.submit "Redefine Yourself" %>
+<% end %>
+</p>
+<h3><%= link_to 'Delete Author', [@author, @thought], data: {confirm: "Are you sure?"}, method: :delete %></h3>

@@ -1,15 +1,17 @@
-<h3>All Thoughts</h3>
+<div class="top"><h3>Recent Thoughts</h3></div>
 <ul>
   <li>
-	<table>
-	<% Thought.all.each do |t| %>
+	<table class="thoughts">
+	<% @thoughts.each do |t| %>
 	  <tr>
-	  <td class="text">
-		<%= link_to t.text, author_thought_path(t.author_id, t.id) %>
-	  </td>
-	  <td>
-		By <%= link_to t.author.name, author_path(t.author) %>
-	  </td>
+	  	<td class="text">
+			<%= link_to author_thought_path(t.author_id, t.id) do %>
+				<%= truncate(t.text, length: 256, separator: ' ', omission: '...<br>(continued)', escape: false) %>
+			<% end %>
+	  	</td>
+	  	<td class="author">
+			Sincerely, <%= link_to t.author.name, author_path(t.author) %><br><span class="time"><%= time_ago_in_words(t.updated_at) %></span> ago
+	  	</td>
 	  </tr>
 	<% end %>
 	</table>
@@ -18,5 +20,4 @@
 	<% end %>
   </li>
 </ul>
-
-
+<%= link_to "Show More", "#", class: "show-more" %>

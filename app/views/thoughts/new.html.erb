@@ -1,2 +1,7 @@
 <h1>Share Your Thoughts</h1>
-<h3>create.thought.text</h3>
+<%= form_for ([@author, @thought]) do |f| %>
+	<%= f.label :text, "Entry" %><br>
+	<%= f.text_area :text %><br><br>
+	<%= f.submit "Write Down Your Thought" %><br>
+<% end %>
+

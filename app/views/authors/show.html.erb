@@ -11,24 +11,31 @@
 		<br>
 	<% end %>
 </h1>
-<h3>
-	Thoughts:
+<h3 class="top">
+	Diary:
 </h3>
-<ul>
+<table class="text">
+	<% if flash[:notice] %>
+	<tr>
+		<td class="info">
+		  	<%= flash[:notice] %>
+		</td>
+	</tr>
+	<% end %>
 		<% @author.thoughts.each do |t| %>
-		  <li class="text">			
+		  <tr>
+		  <td class="text">			
 			<%= link_to t.text, author_thought_path(t.author_id, t.id) %>
-		  </li>	
+		  </td>
+		  </tr>	
 		<% end %>
 		<% if @author.thoughts.count.zero? %>
-			This Author is Not Thinking
+			<p class="top">This Author is Not Thinking</p>
 		<% end %>
-</ul>
+	</tr>
+</table>
 <div>
 	<% if current_author == @author %>
-		<span class='left'><%= link_to 'Update Account', @author, method: :put %></span>
-		<span class='right'><%= link_to 'Delete Account*', @author, method: :delete %></span>
-	<% end %>
-	<p>*Can't get these links to spread to edges*</p>
+		<span class='left'><%= link_to 'Edit Profile', edit_author_path(@author) %></span>
+	<% end %><br>
 </div>
-<h1>^Links use Author.last when not signed in</h1>

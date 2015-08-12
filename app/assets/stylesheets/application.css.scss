@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
- @import url(//fonts.googleapis.com/css?family=Indie+Flower|Poiret+One|Lobster);
+@import url(//fonts.googleapis.com/css?family=Pacifico|Pinyon+Script|Homemade+Apple|Indie+Flower|Poiret+One|Lobster);
+
 *, :before, :after {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -22,6 +23,7 @@
 
 .text {
 	font-family: 'Indie Flower', cursive;
+	width: 50%;
 }
 
 html, body {
@@ -44,9 +46,25 @@ table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 	width: 100%;
+	&.text {
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	&.thoughts {
+		max-width: 800px;
+		margin: 0 auto;
+	}
 }
-th, td {
+th {
 	padding: 15px;
+}
+td {
+	padding: 15px;
+	width: 25%;
+	&.text {
+		width: 75%;
+	}
 }
 a:hover {
 	color: purple;
@@ -89,17 +107,37 @@ a {
 	color: black;
 	text-decoration: none;
 }
+.greeting {
+	font-family: 'Pinyon Script', cursive;
+}
+.signature {
+	font-family: 'Homemade Apple', cursive;
+}
+.info {
+	font-family: 'Pacifico', cursive;
+}
 span.tag {
 	font-size: 15px;
 }
 .top {
 	text-align: center;
 }
-.right {
-	text-align: right;
+.spread {
+	font-size: 0;
+	display: inline-block;
 	width: 100%;
+	> span {
+		font-size: 15px;
+		text-align: center;
+		display: inline-block;
+		vertical-align: top;
+		width: 50%;
+	}
 }
-.left {
+.left-quarter {
+	display: inline-block;
 	text-align: left;
-	width: 100%;
+	width: 25%;
+}
+.show-more {
 }

@@ -1,0 +1,7 @@
+<h1>Think, Again</h1>
+<%= form_for ([@author, @thought]) do |f| %>
+	<%= f.label :text, "Entry" %><br>
+	<%= f.text_area :text %><br><br>
+	<%= f.submit "Finish Your Thought" %>
+<% end %>
+<h3><%= link_to 'Delete Thought', [@author, @thought], data: {confirm: "Are you sure?"}, method: :delete %></h3>

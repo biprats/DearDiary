@@ -1,9 +1,12 @@
-<h3>Just a Thought by <%= @thought_author.name %></h3>
+<h3 class="greeting">Dear Diary,</h3>
 <br>
 <p class="text">
 	<%= @thought.text %>
 </p>
 <br>
+<h3 class="greeting">Sincerely,</h3>
+<h3 class="signature"><%= link_to @thought_author.name, author_path(@thought_author) %></h3>
 <p>
-	<%= link_to "More Thoughts by This Author", author_path(@thought_author) %>
+<%= time_ago_in_words(@thought.updated_at) %> ago
 </p>
+<%= link_to "Rethink This", edit_author_thought_path(@thought.author_id, @thought.id) if @author == current_author %>
