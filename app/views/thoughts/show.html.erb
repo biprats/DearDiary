@@ -9,4 +9,4 @@
 <p>
 <%= time_ago_in_words(@thought.updated_at) %> ago
 </p>
-<%= link_to "Rethink This", edit_author_thought_path(@thought.author_id, @thought.id) if @author == current_author %>
+<%= link_to "Rethink This", edit_author_thought_path(@thought.author_id, @thought.id) if current_author == @author || current_author.try(:admin) %>

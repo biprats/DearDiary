@@ -44,11 +44,14 @@ class ThoughtsController < ApplicationController
 		respond_to do |format|
 			format.html do
 				@authors = Author.all
-				@thoughts = @thoughts.all.limit(5)
+				@thoughts = @thoughts.limit(5)
 			end
 			format.json do
-				@thoughts = @thoughts.offset(params[:page].to_i*5).limit(5)
-				render json: @thoughts.to_json(include: :author, methods: [:time_ago])
+				@next_thoughts = @thoughts.offset(params[:page].to_i*5).limit(5)
+				render json: {
+					thoughts: @next_thoughts.as_json(include: :author, methods: [:time_ago]),
+					end_thoughts: @thoughts.offset(params[:page].to_i*5+5).count.zero?
+				}
 			end
 		end
 	end

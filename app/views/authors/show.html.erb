@@ -1,41 +1,73 @@
-
-<h1 class='top'><%= @author.name %>
+<h1 class='top'><%= @author.name %>'s Diary
+<HR COLOR="#6666CC" WIDTH="60%">
+<% if flash[:alert] %>
+	<h3 class="alert"><%= flash[:alert] %></h3>
+<% end %>
 	<% if @author.bio.present? %>
-	<br>
 		<h3>
 			Bio:
 		</h3>
 		<p>
 			<%= @author.bio %>
 		</p>
-		<br>
 	<% end %>
 </h1>
-<h3 class="top">
-	Diary:
-</h3>
-<table class="text">
+<% if @author.thoughts.count.zero? %>
 	<% if flash[:notice] %>
-	<tr>
-		<td class="info">
-		  	<%= flash[:notice] %>
-		</td>
-	</tr>
+		<p class="alert">
+			<%= flash[:notice] %>
+		</p>
 	<% end %>
-		<% @author.thoughts.each do |t| %>
+	<p class="top">
+		This Author is Not Thinking
+	</p>
+<% else %>
+	<table class="thoughts">
+		<% if flash[:notice] %>
+			<tr>
+				<td class="info">
+		  			<%= flash[:notice] %>
+				</td>
+			</tr>
+		<% end %>
+		<% @thoughts.each do |t| %>
 		  <tr>
-		  <td class="text">			
-			<%= link_to t.text, author_thought_path(t.author_id, t.id) %>
-		  </td>
-		  </tr>	
+		 	<td class="text">
+		  		<%= link_to author_thought_path(t.author_id, t.id) do %>
+		  			<%= truncate(t.text, length: 256, separator: ' ', omission: '...<br>(continued)', escape: false) %>		
+				<% end %>
+			</td>
+		  	<td class="time">
+		  		<span>
+					<%=  time_ago_in_words(t.updated_at) %>ago
+		  		</span>
+		  	</td>
+		  </tr>
 		<% end %>
-		<% if @author.thoughts.count.zero? %>
-			<p class="top">This Author is Not Thinking</p>
-		<% end %>
-	</tr>
-</table>
+	</table>
+	<% if @author.thoughts.count > 5 %>
+		<table class ="after-thoughts">
+				<tr>
+					<td class='top'>
+						<%= link_to "Show More", "#", class: "show-more" %>
+					</td>	
+				</tr>
+		</table>
+	<% end %>	
+<% end %>
 <div>
-	<% if current_author == @author %>
+	<% if current_author == @author || current_author.try(:admin) %>
 		<span class='left'><%= link_to 'Edit Profile', edit_author_path(@author) %></span>
 	<% end %><br>
+</div><br>
+<div class="top">
+	<% if current_author.try(:admin) %>
+		<%= form_for(@author) do |f| %>
+			<%= f.label :email, "Make" %>
+			<%= f.email_field :email %>
+			<%= f.label :admin, "Editor?" %>
+			<%= f.check_box :admin %><br>
+			<%= f.submit "Empower Author" %>
+		<% end %>
+	<% end %>
 </div>

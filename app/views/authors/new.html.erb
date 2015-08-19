@@ -6,10 +6,14 @@
 	<h3>Sign Up</h3>
 		<div class="left-quarter">
 			<br><br><%= form_for(Author.new) do |f| %>
+				<%= f.label :email %>
+				<%= f.email_field :email %>
 				<%= f.label :name %>
 				<%= f.text_field :name %><br /><br>
 				<%= f.label :password %>
-				<%= f.password_field :password %><br><br>
+				<%= f.password_field :password %><br>
+				<%= f.label :password, "Confirm Password" %>
+				<%= f.password_field :password_confirmation %><br><br>
 				<%= f.label :bio %><br />
 				<%= f.text_area :bio %><br /><br>
 				<%= f.submit "Get Published" %>
@@ -20,8 +24,8 @@
 	<h3>Sign In</h3>
 		<div class="left-quarter">
 			<br><br><%= form_for(Author.new, url: sessions_path) do |f| %>
-				<%= f.label :name %>
-				<%= f.text_field :name %><br /><br>
+				<%= f.label :email, "Enter Name or Email"  %>
+				<%= f.text_field :email %><br /><br>
 				<%= f.label :password %>
 				<%= f.password_field :password %><br /><br>
 				<%= f.submit "Sign In" %>
